@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!--Recuerda que head solo es visible para los desarroladores web -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquillaje</title>
+    <head>
+        <meta name="description" content="Página de Maquillaje.">
+        <meta name="keywords" content=" Maquillaje, belleza, labailes">
+        <meta name="author" content="Fatima">
+        <meta name="copyright" content=" 2025 Inter de MakeupBAN- Uso no oficial">
+        <meta name="application-name" content="MakeupBAN">
+        <meta name="generator" content="VSCode">
+       
+        <!--Bootstrap CSS (CDN)-->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+        crossorigin="anonymous">
+        <!--CSS-->
+         <link rel="stylesheet" href="styles.css">
+
+n
+<!-- para íconos -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      referrerpolicy="no-referrer" />
+      
+    
+       </head>
+      </body>
+       <!-- ================== NAVBAR ==================
+       Chicos: menú superior. Se vuelve "hamburguesa" en móviles.
+       - Cambien textos/links a su gusto.
+       - Si ya tienen LOGO, descomenten el <img> y apunten a /img/logo.svg o .png -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" aria-label="Navegación principal">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <!-- Chicos: descomenten la línea de abajo si tienen logo -->
+        <img src="logo.jpg" alt="MakeupBRAND" height="28" class="align-text-top me-2"> 
+        <span class="fw-semibold">MakeUpBRAND</span>
+      </a>
+
+      <!-- Botón hamburguesa (móvil) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar" aria-expanded="false" aria-label="Alternar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links del navbar -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tablaProductos">Inventario</a></li>
+        </ul>
+
+        <!-- Botón que abre un modal (ver más abajo: #modalAviso) -->
+        <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalAviso">
+          Aviso
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- ================ /NAVBAR ================== -->
+
+  <header>
+    <h1>MakeUpBRAND</h1>
+    <p>New products</p>
+  </header>
+<!--BANNER PROMOCIONAL-->
+<section class="container my-3">
+<div id="banner" class="p-4 rounded bg-dark text-white">
+  <h2 class="h4 mb-2">Promo de la semana</h2>
+  <p class="mb-0">Envío gratis en compras mayores a $599</p>
+</div>
+<button id="btnPromo" class="btn btn-warning btn-sm mt-2">
+  Actualizar promoción
+</button>
+</section>
+  <div class="container mt-3">
+</div>
+  <!-- ================== HEADER ==================>
+
+</head>
+<body>
+  <header>
+    <h1>Maquillaje </h1>
+    <p>Maquillaje de la mejor calidad </p>
+ </header>
+
+
+ <!-Alerta de ejemplo -->
+  <div class="container mt-3">
+    <div class="alert alert-info" role="alert">
+      Aquí tienes información adicional (ejemplo de <strong>alert</strong>).
+    </div>
+  </div>
+</body>
+<!--PRUEBA CARRITO-->
+<!-- ====================================== -->
+<!-- SECCIÓN DEL CARRITO (ARRIBA) -->
+<!-- ====================================== -->
+<section id="carrito-container" class="container mb-4">
+<h2><i class="bi bi-cart"></i> Carrito de Compras</h2>
+<!-- Mensaje de feedback -->
+<div id="mensaje-feedback" class="alert d-none mt-2" role="alert">
+<!-- El mensaje se insertará aquí -->
+</div>
+<div id="carrito" class="card card-neon"> <!-- Aplicamos estilo neón a la card del carrito -->
+<div class="card-body">
+<ul id="lista-carrito" class="list-group list-group-flush">
+<!-- Los elementos del carrito se añadirán aquí -->
+<li class="list-group-item text-muted" id="carrito-vacio">El carrito está vacío.</li>
+</ul>
+</div>
+</div>
+<button id="btn-eliminar" class="btn btn-danger mt-3 w-100 disabled btn-neon-glow"> <!-- Botón eliminar con brillo -->
+<i class="bi bi-trash"></i> Eliminar Último Producto
+</button>
+</section>
+<!-- ====================================== -->
+ <!-- ====================================== -->
+<!-- SECCIÓN DE PRODUCTOS -->
+<!-- ====================================== -->
+<section id="productos" class="container mt-4">
+  <h3>Productos disponibles</h3>
+  <div class="row g-3">
+    <div class="col-md-3">
+      <button class="btn btn-outline-primary w-100 agregar-producto" data-producto="Labial MAC">💄 Labial MAC</button>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-outline-secondary w-100 agregar-producto" data-producto="Sombra Patrick Ta">🎨 Sombra Patrick Ta</button>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-outline-success w-100 agregar-producto" data-producto="Base Rare Beauty">✨ Base Rare Beauty</button>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-outline-warning w-100 agregar-producto" data-producto="Gloss Glossier">💋 Gloss Glossier</button>
+    </div>
+  </div>
+</section>
+
+ <!--contenido principal-->
+ <main class="container my-4">
+<div class="row g-4">
+  <!--- === Columna principal === -->
+  <div class="col-12 col-lg-8"></div>
+  <!-- ===Card del producto ===-->
+   <div class="col-md-7">
+    <div class="card-body"></div>
+   <h2 class="card-tittle h4 mb-2">Maquillaje exclusivo</h2>
+   <p class="card-text mb-1">De tus creadores favoritos</p>
+   <p class="card-text fs-5 fw-semibold text success">$399</p>
+   </div>
+   </div>
+
+
+
+
+
+    <!--imagen del producto-->
+   <img src="maquillaje.jpeg" alt="Productos" width="300">
+   </div>
+<div class="col-md-7"></div>
+<div class="card-body"></div>
+<div class="card-body"></div>
+   <h2>EXPORTADO DESDE ESTADOS UNIDOS</h2>
+  <p>Maquillaje exlusivo</p>
+  <p>Precio: $245</p>
+  <!--Elace a la tienda en línea-->
+  <a href="https://beautycreationscosmetics.com.mx/?srsltid=AfmBOopQv7TRdyeXEhMJ-zbpxBwceELaSn9mcFBSezqzFJxyAtCZl1xb" target="_blank">Comprar</a><br>
+  <target="_blank"
+  class="btn btn-primary btn-sm"><a>Comprar ahora</a>
+  <!--Botón extra modal para más detalles del prodcuto-->
+  <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target>Más detalles</button>
+  <hr class="my-4/">
+<!--Vamos a agregar una lista de caracteristicas-->
+<h3 class="h5">CaracterÍsticas:</h3>
+<ul class="mb-0">
+  <li>Colores: Neutros, Brillos, Vibrantes</li>
+  <li>Colaboraciones: Selena Gómez, Kenia Os,Kyle Jenner </li>
+  </ul>
+  
+<!-- =========== NAVS & TABS (dentro de la card) ===========
+     Chicos: ejemplo básico de pestañas para organizar info del producto.
+     - data-bs-toggle="tab" cambia el contenido visible sin recargar.
+     - Cada .tab-pane debe tener su id y la pestaña su data-bs-target al mismo id. -->
+<ul class="nav nav-tabs mt-3" id="tabsProducto" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="tab-desc" data-bs-toggle="tab" data-bs-target="#pane-desc"
+            type="button" role="tab" aria-controls="pane-desc" aria-selected="true">
+      Descripción
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="tab-especs" data-bs-toggle="tab" data-bs-target="#pane-especs"
+            type="button" role="tab" aria-controls="pane-especs" aria-selected="false">
+      Especificaciones
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="tab-op" data-bs-toggle="tab" data-bs-target="#pane-op"
+            type="button" role="tab" aria-controls="pane-op" aria-selected="false">
+      Opiniones
+    </button>
+  </li>
+</ul>
+
+<div class="tab-content border border-top-0 p-3 rounded-bottom">
+  <div class="tab-pane fade show active" id="pane-desc" role="tabpanel" aria-labelledby="tab-desc">
+   Maquillaje con la formula mejorada, de la mejor calidad
+  </div>
+  <div class="tab-pane fade" id="pane-especs" role="tabpanel" aria-labelledby="tab-especs">
+    Gran variedad de productos
+  </div>
+  <div class="tab-pane fade" id="pane-op" role="tabpanel" aria-labelledby="tab-op">
+    ★★★★☆ — “Muy buena duración.” — Cliente verificado
+  </div>
+</div>
+<!--========/NAV AND TABS========-->
+
+
+   </div><!--cierra card-body-->
+  </div> <!--cierra col-md-7-->
+ </div> <!--cierra .row g-0-->
+</div> <!--cierra .card-->
+</div> <!--cierra .col-12 col-lg-8-->
+
+
+
+<!--Imagen del maquillaje-->
+<img src="imagen3.jpg" alt="Productos" width="300">
+<!--Vamos a agregar una lista de caracteristicas-->
+<h3 class="h5">Nuestros productos</h3>
+<ul class="list-unstyled mb-0">
+  <li>La mejor pigmentación</li>
+  <li>Colores neutros</li>
+  <li>Color vibrantes</li>
+</ul>
+
+ <!--Agregamos tabla con estilos bootsrap-->
+ <section class="mt-2" id="TablaProductos"></section>
+ <h3 class="h5 mb-3"> Tabla de productos:</h3>
+ <div class="table-responsive"></div>
+ <table class ="table table-striped table-hover align-middle"></table>
+ <thead class="table-dark"></thead>
+   <tr>
+            <th>Productos</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+   </tr>
+   </thead>
+  </tbody>
+
+            <tr> 
+            <td>Labial</td> 
+            <td>$249.00</td> 
+            <td>1</td>
+            </tr>
+            <tr> 
+            <td>Sombras</td>
+            <td>$199.00</td>
+            <td>3</td>
+            </tr>
+            <tr> 
+            <td>Gloss</td>
+            <td>$320.00</td>
+            <td>4</td>
+            </tr>
+            </tbody>
+          </tfoot>
+</table>
+<tr class="fw-bold">
+<td colspan="2">Total de productos</td>
+<td>35</td>
+</tr>
+</tfoot>
+</target>
+</main>
+ <!--Fila de totales-->
+ <tr style="font-weight:bold; background-color:#b66c9dd8;">
+  <td colspan="2">Total de productos</td>
+  <td>9</td>
+  </tr>
+</tr>
+</table>
+</div>
+<!--SECCIÓN COLAPSABLE-->
+
+<!--Sección acordeón, nos sirve para agrupar secciones-->
+<section class="my-5">
+  <h3 class="h5 mb-3">Preguntas frecuentes:</h3>
+  <div class="accordion" id="faqAccordion">
+    <!--Pregunta 1-->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="encabezadoUno">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseUno" aria-expanded="true" aria-controls="collapseUno">¿Cuánto tarda el envío?
+      </button>
+
+      </h2>
+    </div>
+  </div>
+  <div id="panelUno" class="accordion-collapse collapse show"
+  aria-labelledby="encabezadoUno" data-bs-parent="#miAcordeon">
+<div class="accordion-body">Los envíos tardan entre 2 y 5 días hábiles, dependiendo tu ubicación</div>
+</div>
+ <!--Pregunta 2-->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="encabezadoDos">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseDos" aria-expanded="true" aria-controls="collapseDos"> Si no me gusta el producto, puedo regresarlo?
+    </button>
+
+      </h2>
+    </div>
+  </div>
+  <div id="panelDos" class="accordion-collapse collapse show"
+  aria-labelledby="encabezadoDos" data-bs-parent="#miAcordeon">
+<div class="accordion-body">Solo si el producto no fue comprado con alguna promoción</div>
+</div>
+<!--Pregunta 3-->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="encabezadoTres">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseTres" aria-expanded="true" aria-controls="collapseTres"> Cuántos días tengo para cambiarlo?
+    </button>
+
+      </h2>
+    </div>
+  </div>
+  <div id="panelDos" class="accordion-collapse collapse show"
+  aria-labelledby="encabezadoDos" data-bs-parent="#miAcordeon">
+<div class="accordion-body">Únicamente 7 días</div>
+</div>
+<script>
+   
+  </script>
+<!-- ================== NUEVA SECCIÓN: HACER PEDIDO ==================
+     Chicos: estructura del formulario usando componentes Bootstrap.
+     OJO: Sin JS por ahora; solo maqueta HTML accesible. -->
+<section id="pedido" class="my-5">
+  <h3 class="h5 mb-3">Hacer pedido</h3>
+
+  <!-- Chicos: Nav Pills para simular pasos del formulario -->
+  <ul class="nav nav-pills mb-3" id="pillsPedido" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-producto-tab" data-bs-toggle="pill" data-bs-target="#pills-producto"
+              type="button" role="tab" aria-controls="pills-producto" aria-selected="true">
+        1) Producto
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-personaliza-tab" data-bs-toggle="pill" data-bs-target="#pills-personaliza"
+              type="button" role="tab" aria-controls="pills-personaliza" aria-selected="false">
+        2) Personaliza
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-notas-tab" data-bs-toggle="pill" data-bs-target="#pills-notas"
+              type="button" role="tab" aria-controls="pills-notas" aria-selected="false">
+        3) Envío
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="pillsPedidoContent">
+    <!-- Paso 1: Producto -->
+    <div class="tab-pane fade show active" id="pills-producto" role="tabpanel" aria-labelledby="pills-producto-tab" tabindex="0">
+      <form aria-label="Formulario de pedido (sin lógica por ahora)">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="selModelo" class="form-label">Modelo</label>
+            <select id="selModelo" class="form-select">
+              <option value="" selected disabled>Elige un modelo</option>
+              <option>Labial</option>
+              <option>Paleta de sombra</option>
+              <option>Gloss</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="selTalla" class="form-label">Tonos</label>
+            <select id="selTalla" class="form-select">
+              <option value="" selected disabled>Elige</option>
+              <option>Matte</option><option>Brilloso</option><option>Vibrante</option><option>Cálidos</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="selColor" class="form-label">Color</label>
+            <select id="selColor" class="form-select">
+              <option value="" selected disabled>Elige</option>
+              <option>Café, Rojo, Rosa</option><option>Rojo</option><option>Tonos verdes</option><option>Café</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label for="inpCantidad" class="form-label">Cantidad</label>
+            <input id="inpCantidad" type="number" min="1" value="1" class="form-control">
+          </div>
+
+          <div class="col-12">
+            <label for="nombreCliente" class="form-label">Tu nombre</label>
+            <input type="text" id="nombreCliente" class="form-control" placeholder="Escribe tu nombre">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Paso 2: Personaliza -->
+    <div class="tab-pane fade" id="pills-personaliza" role="tabpanel" aria-labelledby="pills-personaliza-tab" tabindex="0">
+      <p class="mb-2">Opciones de personalización:</p>
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="chkNombreNumero">
+            <label class="form-check-label" for="chkNombreNumero">Grabar tu nombre en el producto</label>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="chkParcheLiga">
+            <label class="form-check-label" for="chkParcheLiga">Crear un tono</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label for="inpNombre" class="form-label">Nombre (opcional)</label>
+          <input id="inpNombre" type="text" class="form-control" placeholder="Ej: Sofía">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="inpColor" class="form-label">Tono (opcional)</label>
+          <input id="inpColor" type="color" min="Rojo" max="Rosa" class="form-control" placeholder="Verde">
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 3: Envío / Notas -->
+    <div class="tab-pane fade" id="pills-notas" role="tabpanel" aria-labelledby="pills-notas-tab" tabindex="0">
+      <div class="mb-3">
+        <label for="txtInstrucciones" class="form-label">Instrucciones específicas</label>
+        <textarea id="txtInstrucciones" class="form-control" rows="3" placeholder="Ej: empaquetar para regalo"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="selEnvio" class="form-label">Envío</label>
+        <select id="selEnvio" class="form-select">
+          <option>Recoger en tienda</option>
+          <option>Envío estándar</option>
+          <option>Envío express</option>
+        </select>
+      </div>
+
+      <!-- Chicos: botones de maqueta, no hacen nada por ahora -->
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-success">Generar pedido (maqueta)</button>
+        <button type="reset" class="btn btn-outline-secondary">Limpiar</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================== /HACER PEDIDO ================== -->
+</section>
+<!--==data-bs-toggle" collapseactiva el efecto"=-->
+<section class="my-5"></section>
+<h3 class="h5 mb-3">Más información</h3>
+<p>
+  <button class="btn btn-outline-info btn" type="button"
+  data-bs-toggle="collapse" data-bs-target="#infoExtra"
+  aria-controls="infoExtra" aria-expanded="false">
+  Mostrar más detalles
+</button>
+</p>
+<div class="collapse" id="infoExtra">
+<div class="card card-body">
+Contamos con los productos más virales de TikTok
+</div><strong>colapsable</strong>
+
+<!-- Columna lateral con ejemplos de componentes 
+      <aside class="col-12 col-lg-4">
+        <div class="card mb-3">
+          <div class="card-header">Botones (Bootstrap)</div>
+          <div class="card-body d-flex flex-wrap gap-2">
+            <button class="btn btn-primary btn-sm">Primario</button>
+            <button class="btn btn-secondary btn-sm">Secundario</button>
+            <button class="btn btn-success btn-sm">Éxito</button>
+            <button class="btn btn-danger btn-sm">Peligro</button>
+            <button class="btn btn-warning btn-sm">Advertencia</button>
+          </div>
+        </div>-->
+
+        <div class="card mb-3">
+          <div class="card-header">Card básica</div>
+          <div class="card-body">
+            <h5 class="card-title">BANCOMER</h5>
+            <p class="card-text">Con tu compra gana hasta viajes</p>
+            <a href="#" class="btn btn-primary btn-sm">Leer más</a>
+          </div>
+        </div>
+
+        <div class="card mb-3" style="width: 100%;">
+          <img src="imagen2.jpg" class="card-img-top" alt="Imagen ejemplo">
+          <div class="card-body">
+            <h5 class="card-title">HSBC</h5>
+            <p class="card-text">Meses sin intereses</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">Tarjeta de crédito</div>
+          <div class="card-body">
+            <h5 class="card-title">HSBC</h5>
+            <p class="card-text">Con tu compra acumula puntos</p>
+            <a href="#" class="btn btn-primary btn-sm">Leer más</a>
+          </div>
+          <div class="card-footer">Pie de la tarjeta</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <!--=================/Contenido principal-MAIN================-->
+
+  <!--Formulario de contacto-->
+  <section id="contacto" class="container my-5">
+    <h3 class="h5 mb-3">Contacto</h3>
+    <form id="formContacto" class="row g-3" a
+    ria-label="Formulario de contacto"></form>
+    <!--Campo 1-->
+    <div class="col-md-6">
+      <label for="cNombre" class="form-label">Nombre</label>
+      <input type="text" id="cNombre" name="nombre"
+      class="form-control" placeholder="Tu nombre">
+    </div>
+
+     <div class="col-md-6">
+      <label for="cEmail" class="form-label">Email</label>
+      <input type="email" id="cEmail" class="form-control" placeholder="tucorreo@ejemplo.com">
+     </div>
+
+      <div class="col-12">
+      <label for="cMsg" class="form-label">Mensaje</label>
+      <input type="cMsg" class="form-control" rows="3" placeholders="¿En qúe te podemos ayudar?">
+     </div>
+
+     <div class="col-12 d-flex gap-2">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="reset" class="btn btn-outline-secondary">Limpiar</button>
+     </div>
+    </form>
+  </section>
+
+  <div class="labial-flotante d-none d-lg-block" aria-hidden="true">
+    💄
+</div>
+
+  <!-- ================== MODALES ==================
+       Chicos: para ABRIR un modal, usen data-bs-toggle="modal" y data-bs-target="#ID" -->
+
+  <!-- Modal: Aviso general (lo abre el botón del navbar) -->
+  <div class="modal fade" id="modalAviso" tabindex="-1" aria-labelledby="modalAvisoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalAvisoLabel">Aviso importante</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Chicos: cambien el mensaje libremente -->
+          Envíos gratis a todo México en compras mayores a $1,499. 🎉
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          <a href="#catalogo" class="btn btn-primary btn-sm">Ver productos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Cupón (lo abre el botón del carrusel) -->
+  <div class="modal fade" id="modalCupon" tabindex="-1" aria-labelledby="modalCuponLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalCuponLabel">Cupón de bienvenida</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          Usa el código <strong>FATIMAR6</strong> y obtén 10% de descuento en tu primera compra.
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">¡Listo!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Detalles del producto (lo abre el botón "Ver detalles" en la card) -->
+  <div class="modal fade" id="modalDetalles" tabindex="-1" aria-labelledby="modalDetallesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalDetallesLabel">Detalles: Playera del Inter 25/26</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Chicos: ejemplo de layout dentro del modal -->
+          <div class="row g-3">
+            <div class="col-md-5">
+              <img src="logo.jpg" alt="Playera del Inter 25/26" class="img-fluid rounded">
+            </div>
+            <div class="col-md-7">
+              <p class="mb-2">100% Mejorado</p>
+              <ul class="mb-3">
+                <li>Colores vibrantes</li>
+                <li>Mejorado</li>
+                <li>Nuevos productos cada semana</li>
+                <li>Envío: 2–5 días hábiles</li>
+              </ul>
+              <div class="d-flex align-items-center gap-2">
+                <span class="fs-5 fw-bold text-success">$2,299</span>
+                <a href="https://www.inter.it/en/store/mens-home-shirt-2023-24" target="_blank" rel="noopener"
+                   class="btn btn-primary btn-sm">Comprar ahora</a>
+                <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <p class="small text-muted mb-0">* Imágenes de referencia. Precio sujeto a cambios sin previo aviso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ================ /MODALES ================ -->
+   <!--Testimonios-->
+   <section id="testimonios" class="container my-5">
+    <h3 class="h5 mb-3">Testimonios</h3>
+
+    <div class="row g-3"></div>
+    <div class="col-md-6">
+      <div class="p-3 border rounded testimonio testimonio-vip">
+        <h4 class="h6 mb-1">Sofía (VIP)</h4>
+        <p class="mb-0">Me encanta este maquillaje, me deja el acabado muy bonito y natural|</p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-3 border rounded testimonio">
+        <h4 class="h6 mb-1">Estrella</h4>
+        <p classñ="mb-0">El paquete llega muy bien</p>
+      </div>
+    </div>
+
+     <div class="col-md-6">
+      <div class="p-3 border rounded testimonio testimonio-vip">
+        <h4 class="h6 mb-1">Ana</h4>
+        <p classñ="mb-0">Tienen productos que no encontraba</p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-3 border rounded testimonio testimonio-vip">
+        <h4 class="h6 mb-1">Iliana</h4>
+        <p classñ="mb-0">Tienen mucha variedad</p>
+      </div>
+    </div>
+
+   </section>
+<!-- ====== BOTÓN WHATSAPP (flotante) ======
+     Chicos: es un <a> fijo en la esquina inferior derecha.
+     Cambien el número a su WhatsApp. Formato: https://wa.me/52[your10digits] -->
+<a
+  href="https://wa.me/527221234567"  
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chatea por WhatsApp">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<!-- ========================= FOOTER =========================
+     Chicos: redes con íconos de Font Awesome. Reemplacen 'tuusuario' por su user real. -->
+<footer class="bg-dark text-center text-white py-3 mt-5">
+  © 2025 Fátima | Sígueme para que no te pierdas ninguna promoción
+  <div class="mt-2">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/tuusuario" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/tuusuario" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="Instagram">
+      <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@tuusuario" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="TikTok">
+      <i class="fab fa-tiktok fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/c/tuusuario" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="YouTube">
+      <i class="fab fa-youtube fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- X / Twitter -->
+    <a href="https://x.com/tuusuario" target="_blank" rel="noopener"
+       class="text-white" aria-label="X">
+      <i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </div>
+</footer>
+<!--Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!--Enlace JS-->
+<scipt src="app.js"></scipt>
+
+
+ 
+</head>
+<body>
+
+
+
+ 
+
+
+
+
+</body>
+<style>
+  body {                                                                             
+      background-color: rgb(223, 179, 198); /* Cambia el color */
+  }
+</style>
+
+    
+</body>
+</html>

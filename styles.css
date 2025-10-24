@@ -1,0 +1,538 @@
+* { box-sizing: border-box; }
+body {
+  margin: 16px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/*palabra clave (keyword)*/
+h1 {
+  color: rgb(238, 83, 179);
+  border-bottom: 4px solid currentColor; /* usa el mismo color del texto */
+}
+
+h2 { color: rgb(224, 59, 175); }
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: rgb(80, 80, 80);
+}
+
+li { color: hsl(0, 64%, 57%); }
+
+th { color: hsl(30, 100%, 50%); }
+
+td { color: hsl(120, 100%, 25%); }
+
+a {
+  color: hsl(320, 77%, 51%);
+  border-bottom: 2px solid currentColor; /* <-- corregido: faltaban : y solid */
+  text-decoration: none;
+}
+a:hover { color: #00990a; }
+
+/* Sugerencia opcional para que la imagen de la card no se deforme */
+.object-fit-cover { object-fit: cover; }
+
+/* === Ajustes responsivos === */
+@media (max-width: 767px) {
+  /* Celular */
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Tablet */
+}
+
+@media (min-width: 1025px) {
+  /* Computadora */
+}
+
+/* ====== Botón flotante WhatsApp ======
+   Chicos: position: fixed lo “pega” a la ventana, no al contenido. */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;     /* Distancia desde abajo */
+  right: 20px;      /* Distancia desde la derecha */
+  background-color: #25d366; /* Verde WhatsApp */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;  /* Tamaño del ícono */
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+  z-index: 1055;    /* Más alto que navbar/carrusel */
+  text-decoration: none;
+  transition: transform .2s ease, background-color .2s ease, opacity .2s ease;
+
+  /* Chicos: por defecto lo ocultamos; se muestra al hacer scroll */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+/* Estado visible al hacer scroll */
+.whatsapp-float.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Hover/focus: efecto de ampliación */
+.whatsapp-float:hover,
+.whatsapp-float:focus {
+  background-color: #20b954;
+  transform: scale(1.08);
+  outline: none;
+}
+
+/* Evitamos que el botón tape el footer en pantallas pequeñas */
+@media (max-width: 575.98px) {
+  footer { padding-bottom: 84px; } /* 60px botón + 24px aire */
+}
+
+/* Accesibilidad: menos movimiento si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float { transition: none; }
+}
+
+/*Prueba*/
+/* ==================================================
+   VARIABLES CSS (Paleta de Colores en HSL - Nueva Paleta)
+   ================================================== */
+:root {
+    /* COLORES BASE DE TU PALETA */
+    --color-primario: hsl(6, 95%, 80%);      /* Color 4: Acento Principal (Rojo claro) */
+    --color-secundario: hsl(17, 85%, 84%);    /* Color 3: Acento Secundario (Naranja claro) */
+    --color-fondo-claro: hsl(29, 100%, 89%);  /* Color 2: Fondo Principal (Durazno/Melocotón) */
+    --color-fondo-sutil: hsl(140, 16%, 73%);   /* Color 1: Fondo Sutil/Neutro (Verde grisáceo) */
+    --color-texto-oscuro: hsl(23, 11%, 56%);  /* Color 5: Texto Oscuro/Bordes (Gris pardo) */
+    --color-blanco: hsl(0, 0%, 100%);
+
+    /* COLORES DE ESTADO (Mantenemos los de Bootstrap para la funcionalidad JS) */
+    --color-exito: hsl(135, 61%, 41%);     /* Verde de éxito (para precios o alertas) */
+    --color-advertencia: hsl(45, 100%, 51%); /* Amarillo de advertencia (para promociones) */
+}
+
+/* ==================================================
+   Actualizaciones Clave en Estilos
+   ================================================== */
+
+body {
+    /* Reemplaza el rosa anterior con tu nuevo fondo (Color 2) */
+    background-color: var(--color-fondo-claro);
+    color: var(--color-texto-oscuro); /* Tu nuevo gris pardo */
+    /* ... el resto de estilos de body ... */
+}
+
+h1, h2 {
+    /* Usa el acento principal (Color 4) o el texto oscuro para un look más suave */
+    color: var(--color-primario); 
+}
+
+/* Links y Enlaces */
+a {
+    /* Usa el acento principal (Color 4) */
+    color: var(--color-primario);
+    border-bottom: 2px solid currentColor; 
+    text-decoration: none;
+}
+a:hover { 
+    /* Usa el color secundario o el texto oscuro para el hover */
+    color: var(--color-secundario); 
+}
+
+/* Footer con tu nuevo color oscuro (Color 5) */
+footer {
+    background-color: var(--color-texto-oscuro) !important; 
+    color: var(--color-blanco) !important;
+}
+
+/* Testimonios VIP con Color 3 de fondo y Color 4 de borde */
+.testimonio-vip {
+    border: 1px solid var(--color-primario) !important;
+    background-color: var(--color-secundario); /* Color 3 */
+}
+:root {
+    --color-primario: hsl(6, 95%, 80%);      /* #FCA89D - Acento Principal (Botones, Links base) */
+    --color-secundario: hsl(17, 85%, 84%);    /* #FAC7B4 - Acento Secundario/Hover Claro */
+    --color-texto-oscuro: hsl(23, 11%, 56%);  /* #998B82 - Texto Oscuro/Hover Oscuro */
+    /* ... otras variables ... */
+}
+/* ... en la sección TIPOGRAFÍA ... */
+
+a {
+    color: var(--color-primario); /* #FCA89D (Rojo claro) como color base */
+    border-bottom: 2px solid currentColor;
+    text-decoration: none;
+}
+a:hover { 
+    /* Cambia al gris pardo de tu Color 5 cuando pasa el mouse */
+    color: var(--color-texto-oscuro); /* #998B82 */
+}
+/* ==================================================
+   HOVER Y COMPONENTES DE BOOTSTRAP
+   ================================================== */
+
+/* 1. Navbar y botones */
+.navbar-brand .fw-semibold {
+    color: var(--color-texto-oscuro); /* Asegura que el nombre de la marca use tu Color 5 */
+}
+
+/* 2. Botones primarios (ej: Comprar ahora) */
+.btn-primary {
+    background-color: var(--color-primario); /* Color 4: #FCA89D */
+    border-color: var(--color-primario);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    /* Oscurece o cambia a tu color de texto oscuro en hover para mayor contraste */
+    background-color: var(--color-texto-oscuro); /* Color 5: #998B82 */
+    border-color: var(--color-texto-oscuro);
+    transform: scale(1.05); /* Ligeras animaciones son buenas */
+}
+
+/* 3. Botones OUTLINE (ej: Aviso, Más detalles) */
+.btn-outline-secondary {
+    color: var(--color-texto-oscuro);
+    border-color: var(--color-texto-oscuro);
+}
+.btn-outline-secondary:hover {
+    background-color: var(--color-texto-oscuro); /* Fondo sólido */
+    color: var(--color-blanco); /* Texto blanco */
+}
+
+/* 4. Botón de promoción (btn-warning en tu HTML) */
+.btn-warning {
+    /* Por si deseas que el botón de promoción sea tu color secundario en lugar del amarillo */
+    background-color: var(--color-secundario); /* Color 3: #FAC7B4 */
+    border-color: var(--color-secundario);
+    color: var(--color-texto-oscuro); /* Texto oscuro para contraste */
+}
+.btn-warning:hover {
+    /* Cambia al color principal en hover */
+    background-color: var(--color-primario); /* Color 4: #FCA89D */
+    border-color: var(--color-primario);
+    color: var(--color-texto-oscuro); 
+}
+/*CAMBIO DE TIPOGRAFIA*/
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
+
+/* ==================================================
+   VARIABLES CSS (Paleta HSL + Tema Dual)
+   ================================================== */
+:root {
+    /* MODO CLARO (Default - Tu nueva paleta) */
+    
+    /* COLORES BASE */
+    --color-fondo-claro: hsl(29, 100%, 89%);   /* #FFE1C9 (Color 2) - Fondo Principal */
+    --color-fondo-sutil: hsl(140, 16%, 73%);    /* #AFC7B9 (Color 1) - Fondo Sutil/Neutro */
+    --color-texto-oscuro: hsl(23, 11%, 56%);   /* #998B82 (Color 5) - Texto Oscuro/Bordes */
+    --color-primario: hsl(6, 95%, 80%);        /* #FCA89D (Color 4) - Acento Principal/Botones */
+    --color-secundario: hsl(17, 85%, 84%);     /* #FAC7B4 (Color 3) - Acento Secundario/Hover Claro */
+    --color-blanco: hsl(0, 0%, 100%);
+    
+    /* COLORES DE ESTADO (Mantenidos para funcionalidad) */
+    --color-exito: hsl(135, 61%, 41%);     
+    --color-advertencia: hsl(45, 100%, 51%); 
+    
+    /* Variables TEMPORALES de colores */
+    --color-tabla-labial: var(--color-primario);
+    --color-tabla-sombras: var(--color-texto-oscuro);
+    --color-tabla-gloss: var(--color-exito); 
+
+    /* VARIABLES DE FUENTE */
+    --font-heading: 'Cormorant Garamond', serif; 
+    --font-body: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; 
+}
+
+/* MODO OSCURO (Para JavaScript que añade el atributo data-theme="dark" al body) */
+[data-theme="dark"] {
+    --color-fondo-claro: hsl(23, 11%, 56%);       /* Fondo Oscuro Principal (Color 5) */
+    --color-texto-oscuro: hsl(29, 100%, 89%);     /* Texto Claro Principal (Color 2) */
+    --color-primario: hsl(6, 95%, 80%);           /* Acento (Color 4) */
+}
+
+
+/* ==================================================
+   ESTILOS BASE
+   ================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--color-fondo-claro);
+    color: var(--color-texto-oscuro);
+	margin: 16px;
+	font-family: var(--font-body); /* Usa la variable de fuente de cuerpo */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave de modo */
+}
+
+/* ==================================================
+   TIPOGRAFÍA
+   ================================================== */
+
+/* Títulos y Encabezados */
+h1 {
+	color: var(--color-primario); 
+    font-family: var(--font-heading); /* Fuente elegante */
+    font-weight: 700;
+	border-bottom: 4px solid currentColor;
+}
+
+h2 { 
+    color: var(--color-primario); 
+    font-family: var(--font-heading); /* Fuente elegante */
+    font-weight: 600;
+}
+
+p {
+	font-family: var(--font-body);
+	font-size: 18px;
+	color: var(--color-texto-oscuro);
+}
+
+/* Lista de productos/características */
+li { 
+    color: var(--color-texto-oscuro); /* Cambiado a Color 5 para mejor legibilidad en el cuerpo */
+}
+
+/* Tabla de Productos */
+th { 
+    color: var(--color-texto-oscuro); 
+}
+td { 
+    color: var(--color-texto-oscuro); /* Usamos Color 5 para consistencia */
+}
+/* Aunque ya no usaremos los colores fijos, dejamos la estructura */
+td:nth-child(1) { color: var(--color-tabla-labial); } 
+td:nth-child(2) { color: var(--color-tabla-sombras); } 
+td:nth-child(3) { color: var(--color-tabla-gloss); }
+
+
+/* Links y Enlaces */
+a {
+	color: var(--color-primario); /* Color 4: #FCA89D */
+	border-bottom: 2px solid currentColor; 
+	text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover { 
+    /* Cambia a tu Color 5 en hover para contraste (el gris pardo) */
+    color: var(--color-texto-oscuro); /* #998B82 */
+}
+
+/* Sugerencia opcional para que la imagen de la card no se deforme */
+.object-fit-cover { object-fit: cover; }
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+footer {
+    background-color: var(--color-texto-oscuro) !important; /* Color 5: #998B82 */
+    color: var(--color-blanco) !important;
+}
+
+/* ==================================================
+   TESTIMONIOS 
+   ================================================== */
+.testimonio {
+    border-color: var(--color-fondo-claro) !important;
+}
+
+.testimonio-vip {
+    border: 1px solid var(--color-primario) !important; /* Borde con Color 4 */
+    background-color: var(--color-secundario); /* Fondo con Color 3: #FAC7B4 */
+}
+
+/* ==================================================
+   HOVER Y COMPONENTES DE BOOTSTRAP
+   ================================================== */
+
+/* Botones primarios (ej: Comprar ahora) */
+.btn-primary {
+    background-color: var(--color-primario); 
+    border-color: var(--color-primario);
+    transition: all 0.2s ease;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    /* Oscurece a Color 5 en hover */
+    background-color: var(--color-texto-oscuro); 
+    border-color: var(--color-texto-oscuro);
+    transform: scale(1.05);
+}
+
+/* Botones OUTLINE (ej: Aviso, Más detalles) */
+.btn-outline-secondary {
+    color: var(--color-texto-oscuro);
+    border-color: var(--color-texto-oscuro);
+    transition: all 0.2s ease;
+}
+.btn-outline-secondary:hover {
+    background-color: var(--color-texto-oscuro); 
+    color: var(--color-blanco); 
+}
+
+/* Botón de promoción (btn-warning) */
+.btn-warning {
+    background-color: var(--color-secundario); /* Color 3: #FAC7B4 */
+    border-color: var(--color-secundario);
+    color: var(--color-texto-oscuro); 
+    transition: all 0.2s ease;
+}
+.btn-warning:hover {
+    background-color: var(--color-primario); /* Color 4: #FCA89D */
+    border-color: var(--color-primario);
+    color: var(--color-texto-oscuro); 
+}
+
+/* ==================================================
+   WHATSAPP FLOAT
+   ================================================== */
+.whatsapp-float {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 20px; 
+	right: 20px; 
+	background-color: #25d366; 
+	color: var(--color-blanco);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px; 
+	box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+	z-index: 1055; 
+	text-decoration: none;
+	transition: transform .2s ease, background-color .2s ease, opacity .2s ease;
+
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(8px);
+	pointer-events: none;
+}
+
+/* Estado visible al hacer scroll */
+.whatsapp-float.show {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+/* Hover/focus: efecto de ampliación */
+.whatsapp-float:hover,
+.whatsapp-float:focus {
+	background-color: #20b954; 
+	transform: scale(1.08);
+	outline: none;
+}
+
+/* ==================================================
+   AJUSTES RESPONSIVOS Y UTILIDADES
+   ================================================== */
+
+@media (max-width: 575.98px) {
+	footer { padding-bottom: 84px; } 
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.whatsapp-float { transition: none; }
+}
+
+/* === Ajustes responsivos (Vacíos por ahora) === */
+@media (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) {
+}
+/* ==================================================
+   ANIMACIÓN: Labial Flotante (LADO DERECHO)
+   ================================================== */
+
+/* 1. Definición de la animación de "flote" */
+@keyframes flotar {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        /* Se mueve 12px hacia arriba o abajo */
+        transform: translateY(-12px); 
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 2. Estilos del elemento flotante */
+.labial-flotante {
+    /* Posicionamiento fijo: se pega a la ventana de navegación */
+    position: fixed;
+    
+    /* Ubicación: arriba (15%) y a la DERECHA (2%) */
+    top: 15%; 
+    right: 2%; /* <--- POSICIÓN EN EL LADO DERECHO */
+    
+    /* Estilo visual */
+    font-size: 64px; 
+    line-height: 1; 
+    
+    /* Animación */
+    animation: flotar 3.5s ease-in-out infinite; 
+    
+    /* Capa y accesibilidad */
+    z-index: 1000; 
+    pointer-events: none;
+    
+    /* Sombra de texto para un pequeño efecto de relieve con tu color primario */
+    text-shadow: 0 0 8px rgba(252, 168, 157, 0.4); 
+}
+/*ZOOM*/
+.producto-card {
+    overflow: hidden; /* Importante para que la imagen no se salga */
+    transition: box-shadow 0.3s ease; /* Transición suave de la sombra */
+}
+
+.producto-card:hover {
+    /* Añade una sombra suave con tu color de acento (Color 4) */
+    box-shadow: 0 8px 16px rgba(252, 168, 157, 0.4); 
+}
+.producto-card img {
+    display: block; /* Asegura que la imagen sea un bloque */
+    width: 100%;
+    height: auto;
+    /* Habilitar las transiciones para el zoom */
+    transition: transform 0.4s ease-out; 
+}
+
+.producto-card:hover img {
+    /* Aumenta el tamaño al pasar el mouse */
+    transform: scale(1.05); /* Zoom de 5% */
+}
+
+
+/*PRUEBA CARRITO*/
+/* Barra superior fija */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+}
+
